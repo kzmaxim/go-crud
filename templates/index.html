@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .button {
+            text-decoration: none;
+            padding: 5px 10px;
+            color: white;
+            border-radius: 3px;
+        }
+        .edit-button {
+            background-color: #4CAF50; /* Green */
+        }
+        .delete-button {
+            background-color: #f44336; /* Red */
+        }
+        .add-button {
+            background-color: #008CBA; /* Blue */
+        }
+    </style>
+</head>
+<body>
+<h1>Games List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{range .}}
+    <tr>
+        <td>{{.Id}}</td>
+        <td>{{.Title}}</td>
+        <td>{{.Genre}}</td>
+        <td>{{.Price}} тг</td>
+        <td>
+            <a href="/edit/{{.Id}}" class="button edit-button">Изменить</a>
+            <a href="/delete/{{.Id}}" class="button delete-button">Удалить</a>
+        </td>
+    </tr>
+    {{else}}
+    <tr>
+        <td colspan="5">No games found</td>
+    </tr>
+    {{end}}
+    </tbody>
+</table>
+<a href="/create" class="button add-button">Добавить</a>
+</body>
+</html>
+
